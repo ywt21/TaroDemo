@@ -17,14 +17,15 @@ const RECOMMEND_SIZE = 20
 class Home extends Component {
     config = {
         navigationBarTitleText: '故事',
-        swiperData: Array(5).fill({
-            rank: '1',
-            img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564747834250&di=7b88515903421ad246913952740655bf&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fa211a222889d4945b4c9806216f23b99f4a6baba.jpg',
-        }),
-        icon: Array(5).fill({
-            url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564846655828&di=67642b0b7df41f1ba10ac507b0467f97&imgtype=0&src=http%3A%2F%2Fpic1.nipic.com%2F2008-12-05%2F200812584425541_2.jpg',
-            name: '故事'
-        }),
+        // swiperData: Array(5).fill({
+        //     rank: '1',
+        //     img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564747834250&di=7b88515903421ad246913952740655bf&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fa211a222889d4945b4c9806216f23b99f4a6baba.jpg',
+        // }),
+        // icon: Array(5).fill({
+        //     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564846655828&di=67642b0b7df41f1ba10ac507b0467f97&imgtype=0&src=http%3A%2F%2Fpic1.nipic.com%2F2008-12-05%2F200812584425541_2.jpg',
+        //     name: '故事'
+        // }),
+
     }
     state = {
         loaded: true,
@@ -34,19 +35,31 @@ class Home extends Component {
     }
     constructor(props) {
         super(props);
+        this.swiperData = {
+            swiperData: Array(5).fill({
+                rank: '1',
+                img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564747834250&di=7b88515903421ad246913952740655bf&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fa211a222889d4945b4c9806216f23b99f4a6baba.jpg',
+            })
+        };
+        this.icon = {
+            icon: Array(5).fill({
+                url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564846655828&di=67642b0b7df41f1ba10ac507b0467f97&imgtype=0&src=http%3A%2F%2Fpic1.nipic.com%2F2008-12-05%2F200812584425541_2.jpg',
+                name: '故事'
+            }),
+        };
         this.state = {
             hasMore: true,
             floor: Array(20).fill({
                 id: 10011,
                 img: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564836572&di=42869f31ddd9a05e6a4973ea2b81c4e4&src=http://pic1.nipic.com/2008-12-05/200812584425541_2.jpg',
                 name: '快来陪我玩啊',
-                title:'这是简介。。。。。。。。。。。',
+                title: '这是简介。。。。。。。。。。。',
 
             })
         }
     }
 
-   
+
 
     loadRecommend = () => {
 
@@ -63,15 +76,15 @@ class Home extends Component {
     }
 
     renderIconGroup = () => {
-        const { icon } = this.config
+        const { icon } = this.icon
         return (
-            <View style={{display:'flex',flexWrap:'wrap',flexDirection:'row',padding:'0 20px 0',marginTop:'20px'}}>
+            <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: '0 20px 0', marginTop: '20px' }}>
                 {
                     icon.map((e, i) => {
                         return (
-                            <View onClick={this.handlePrevent} style={{ display:'flex',flexDirection:'column',alignItems:'center',marginRight:'27px',}}>
-                                <Image style={{width:'40px',height:'40px'}} src={e.url} />
-                                <Text style={{fontSize:'12px'}}>{e.name}</Text>
+                            <View onClick={this.handlePrevent} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '27px', }}>
+                                <Image style={{ width: '40px', height: '40px' }} src={e.url} />
+                                <Text style={{ fontSize: '12px' }}>{e.name}</Text>
                             </View>
                         )
                     })
@@ -83,7 +96,7 @@ class Home extends Component {
 
     render() {
         const { floor } = this.state
-        const { swiperData } = this.config
+        const { swiperData } = this.swiperData
 
         return (
             <View className='home'>
